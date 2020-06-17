@@ -11,7 +11,7 @@ namespace GradeBook.Tests
             var x = GetInt();
             SetInt(ref x);
 
-            Assert.Equal(3, x);
+            Assert.Equal(42, x);
         }
 
         private void SetInt(ref int x) 
@@ -30,7 +30,7 @@ namespace GradeBook.Tests
             var book1 = GetBook("Book 1");
             GetBookSetName(ref book1, "New name");
 
-            Assert.Equal("Book 1", book1.Name);
+            Assert.Equal("New name", book1.Name);
         }
 
         private void GetBookSetName(ref Book book, string name)
@@ -58,7 +58,7 @@ namespace GradeBook.Tests
             var book1 = GetBook("Book 1");
             SetName(book1, "New name");
 
-            Assert.Equal("Book 1", book1.Name);
+            Assert.Equal("New name", book1.Name);
         }
 
         private void SetName(Book book, string name)
