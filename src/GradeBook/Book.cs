@@ -2,25 +2,25 @@ using System.Collections.Generic;
 using System;
 namespace GradeBook
 {
-    class Book
+    public class Book
     {
-        public void ShowStatistics()
+        public Statistics GetStatistics()
         {
-            var result = 0.0;
-            var highGrade = double.MinValue;
-            var lowGrade = double.MaxValue;
-            foreach(var number in grades) {
+            var result = new Statistics();
+            result.Average = 0.0;
+            result.High =  double.MinValue;
+            result.Low = double.MaxValue;
 
-                highGrade = Math.Max(number, highGrade);
-                lowGrade = Math.Min(number, lowGrade);
-                result += number;
+            foreach(var grade in grades) {
+
+                result.High = Math.Max(grade, result.High);
+                result.Low = Math.Min(grade, result.Low);
+                result.Average += grade;
             }
 
-            result = result / grades.Count;
+            result.Average /= grades.Count;
 
-            Console.WriteLine($"The Highest Grade is: {highGrade:N1}");
-            Console.WriteLine($"The Lowest Grade is: {lowGrade:N1}");
-            Console.WriteLine($"The Average grade is: {result:N1}");
+            return result;
         }
         public Book(string name) 
         {
